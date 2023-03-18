@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background-color:#947fff;
+        }
+       #box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       }
+        #main{
+            display: flex;
+            height: 598px;
+            width: 400px;
+            border: 4px solid black;
+            border-radius: 15px;
+            /* margin: auto; */
+           margin-top: 30px;
+           align-items: center;
+           flex-direction: column;
+           background-color: purple;
+            
+
+        }
+       #screen{
+       margin-top: 10px;
+       height: 10%;
+       width: 80%;
+      
+       border: 2px solid black;
+       border-radius: 5px;
+       margin-bottom: 12px;
+       background-color: rgb(244 229 247);
+       }
+       #screen span{
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 3px 5px;
+        padding: 3px;
+       }
+        #screen input{
+            margin-top:20px;
+            height: 10vh;
+            width: 18vw;
+            font-size: 2rem;
+          
+        }
+        #buttons{
+            display: flex;
+            flex-direction: column;
+            height: 75vh;
+            /* margin: 20px 10px; */
+            margin-top: 15px;
+            margin-bottom: 5px;
+            /* border: 2px solid gray; */
+            border-radius: 13px;
+            margin-top: 3px;
+        }
+        .btns{
+            height: 100px;
+            width: 80px;
+            font-size: 20px;
+            border: 2px solid purple;
+            border-radius: 5px;
+            margin: 3px;
+            
+        }
+        .btns:hover{
+            cursor: pointer;
+            background-color: rgb(207, 183, 230);
+            border: 3px solid black;
+        }
+        #point{
+            font-size: 1.5rem;
+        }
+        .row{
+            display: flex;
+        }
+        #row-5{
+            margin-top: 10px;
+        }
+        #equals{
+            height: 20px;
+            width: 80px;
+            height: 250%;
+            width: 100%;
+            border: 2px solid purple;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="main">
+
+            <div id="screen">
+                <!-- <textarea name="" id="" cols="40" rows="4" placeholder=""></textarea> -->
+                <span id="text"></span>
+            </div>
+            
+            <div id="buttons">
+                <div id="row-1" class="row">
+                    <button class="btns" onclick="adds(7)">7</button>
+                    <button class="btns"onclick="adds(8)">8</button>
+                    <button class="btns"onclick="adds(9)">9</button>
+                    <button class="btns"onclick="adds('/')" >/</button>
+                        
+                    
+                </div>
+                <div id="row-2" class="row">
+                    <button class="btns"onclick="adds(4)">4</button>
+                    <button class="btns"onclick="adds(5)">5</button>
+                    <button class="btns"onclick="adds(6)">6</button>
+                    <button class="btns"onclick="adds('*')">*</button>
+                </div>
+                <div id="row-3" class="row">
+                    <button class="btns" onclick="adds(1)">1</button>
+                    <button class="btns" onclick="adds(2)">2</button>
+                    <button class="btns" onclick="adds(3)">3</button>
+                    <button class="btns" onclick="adds('+')">+</button>
+                </div>
+                <div id="row-4" class="row">
+                    <button id="point" class="btns"onclick="adds('.')">.</button>
+                    <button class="btns"onclick="adds(0)">0</button>
+                    <button class="btns"onclick="clears()">C</button>
+                    <button class="btns"onclick="adds('-')">-</button>
+                </div>
+                <div id="row-5" class="row">
+                    <button id="equals" onclick="evals()">=</button>
+                </div>
+            </div>
+
+        </div>
+        <h1>Calculator</h1>
+    </div>
+</body>
+<script>
+
+    let input = document.getElementById('text');
+    st = "";
+
+function adds(element){
+    st = st+element;
+    input.innerHTML = st;
+}
+function clears(){
+   st = ""
+    input.innerHTML = st;
+}
+
+function evals(){
+    try{
+
+        st = eval(st)
+        // console.log(eval(st));
+        input.innerHTML = st;
+    }
+    catch (e) {
+        input.innerHTML = "Invalid Input";
+        st = "";
+}
+    
+}
+</script>
+</html>
